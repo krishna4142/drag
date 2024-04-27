@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .parent{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+
+    </div>
+    <script>
+        let box=document.querySelector(".parent");
+        box.addEventListener("mousedown",avg);
+        function avg(){
+            box.addEventListener("mousemove",up);
+            document.body.addEventListener("mousemove",up);
+            box.addEventListener("mouseup",down);
+        }
+        function up(e){
+            let rect=box.getBoundingClientRect();
+            box.style.top=`${rect.top+e.movementY}px`
+            box.style.left=`${rect.left+e.movementX}px`
+        }
+    </script>
+</body>
+</html>
